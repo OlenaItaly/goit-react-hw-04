@@ -1,4 +1,4 @@
-export default function ImageGallery(items) {
+export default function ImageGallery({ items }) {
     return (
         <ul>
             {items.map((item) => (
