@@ -1,0 +1,18 @@
+.container {
+ 
+    max-width: 1440px;
+      /* padding: 0 20px; */
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.header {
+    display: flex;
+    height: 80px;
+    background-color: aqua;
+   justify-content: center;
+    align-items: center;
+}
+
+.section {
+    /* padding: 20px; */
+}

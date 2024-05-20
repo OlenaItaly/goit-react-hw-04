@@ -3,7 +3,7 @@ import css from "./App.module.css"
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import { getImages } from "../images_api";
-
+import toast from "react-hot-toast";
 
 
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
     const [isError, setIsError] = useState(false);
     const [page, setPage] = useState(1);
      const [searchQuery, setSearchQuery] = useState("");
+    const [totalImages, setTotalImages] = useState(0);
     
     useEffect(() => {
         if (searchQuery === "") {
@@ -22,10 +23,12 @@ export default function App() {
                 setIsLoading(true);
                 setIsError(false);
                 const data = await getImages(searchQuery, page);
-           
-                setImages((prevState) => [...prevState, ...data]);
+             
+                setImages((prevState) => [...prevState, ...data.results]);
+                setTotalImages(data.total);
+              
             } catch (error) {
-                console.log("error");
+                toast.error(error.message);
                 setIsError(true);
             } finally {
                 setIsLoading(false);
@@ -40,7 +43,8 @@ export default function App() {
     const handleSearch = async (topic) => {
     setSearchQuery(topic);
     setPage(1);
-    setImages([]);
+        setImages([]);
+         setTotalImages(0);
   };
 
   const handleLoadMore = async () => {
@@ -49,15 +53,16 @@ export default function App() {
 
     return (
       <div className={css.container}>
-        <header>
-          <SearchBar onSearch={handleSearch} />
+        <header className={css.header}>
+          <SearchBar onSearch={handleSearch}/>
           {isError && <p>Oops! There was an error! Try again!</p>}
         </header>
-        <section>
-                {images.length > 0 && <ImageGallery items={images} />}
-                {images.length > 0 && !isLoading && (
-                    <button onClick={handleLoadMore}>Load more</button>
-                )}
+        <section className={css.section}>
+          {isLoading && <p>Loading image, please await...</p>}
+          {images.length > 0 && <ImageGallery items={images} />}
+          {images.length < totalImages && !isLoading && (
+            <button onClick={handleLoadMore}>Load more</button>
+          )}
         </section>
       </div>
     );
