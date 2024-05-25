@@ -1,9 +1,13 @@
 import css from "./ImageCard.module.css"
 
-export default function ImageCard({ imgLink, imgSlug }) {
+export default function ImageCard({ imgLink, imgSlug,imgModal, onClick }) {
+   const handleClick = () => {
+     // 
+     onClick(imgModal);
+    }
     return (
       <div className={css.thumb}>
-        <img src={imgLink} alt={imgSlug} />
+        <img onClick={handleClick} src={imgLink} alt={imgSlug} loading="lazy" />
       </div>
     );
 }

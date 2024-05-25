@@ -8,7 +8,7 @@ export const getImages = async (topic, currentPage) => {
           client_id: API_KEY,
       query: topic,
       page: currentPage,
-     per_page: 15,
+     per_page: 5,
     },
   });
 

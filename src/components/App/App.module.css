@@ -4,15 +4,30 @@
       /* padding: 0 20px; */
   margin: 0 auto;
   margin-bottom: 20px;
+
 }
 .header {
     display: flex;
     height: 80px;
-    background-color: aqua;
+    background-color: blue;
    justify-content: center;
     align-items: center;
 }
 
 .section {
     /* padding: 20px; */
+}
+
+.btnLoadMore{
+  border: 1px solid black;
+    border-radius: 8px;
+    background-color: rgb(78, 78, 78);
+    color: white;
+    padding: 10px;
+    font-weight: 500;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+
 }
