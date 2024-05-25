@@ -27,7 +27,7 @@ export default function App() {
                 setIsLoading(true);
                 setIsError(false);
                 const data = await getImages(searchQuery, page);
-             console.log(data);
+             
                 setImages((prevState) => [...prevState, ...data.results]);
                 setTotalImages(data.total);
               
@@ -59,7 +59,7 @@ export default function App() {
    const openModal = (photo) => {
      setModalIsOpen(true);
      setModalImg(photo);
-     console.log(photo)
+    
    };
 
    const closeModal = () => {
