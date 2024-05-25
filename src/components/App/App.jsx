@@ -6,6 +6,7 @@ import { getImages } from "../images_api";
 
 import ImageModal from "../ImageModal/ImageModal";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 
 
 export default function App() {
@@ -80,7 +81,8 @@ export default function App() {
             <ImageGallery items={images} onImageClick={openModal} />
           )}
           {images.length < totalImages && !isLoading && (
-            <button className={css.btnLoadMore} onClick={handleLoadMore}>Load more</button>
+            <LoadMoreBtn onLoadMoreBtn={handleLoadMore} />
+            // <button className={css.btnLoadMore} onClick={handleLoadMore}>Load more</button>
           )}
           {modalIsOpen && (
             <ImageModal
