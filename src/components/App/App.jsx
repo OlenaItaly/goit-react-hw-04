@@ -80,9 +80,9 @@ export default function App() {
           {images.length > 0 && (
             <ImageGallery items={images} onImageClick={openModal} />
           )}
+
           {images.length < totalImages && !isLoading && (
             <LoadMoreBtn onLoadMoreBtn={handleLoadMore} />
-            // <button className={css.btnLoadMore} onClick={handleLoadMore}>Load more</button>
           )}
           {modalIsOpen && (
             <ImageModal
