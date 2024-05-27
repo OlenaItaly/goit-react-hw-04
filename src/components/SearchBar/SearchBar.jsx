@@ -9,7 +9,7 @@ export default function SearchBar({ onSearch }) {
         onSubmit={(values, actions) => {
           if (!values.search.trim()) {
             toast.error("empty query", {
-              duration: 5000,
+              duration: 2500,
               style: { color: "red" },
             });
             return
