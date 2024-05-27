@@ -1,4 +1,4 @@
-import {  } from "react-dom";
+import toast,{Toaster} from "react-hot-toasr";
 import { Formik, Form, Field } from 'formik';
 import css from "./SearchBar.module.css"
 
@@ -7,6 +7,10 @@ export default function SearchBar({ onSearch }) {
       <Formik
         initialValues={{ search: "" }}
         onSubmit={(values, actions) => {
+          if (!values.search.trim()) {
+            toast.error('empty query',{ style: {color: 'red'}})
+            return
+          }
           onSearch(values.search);
           actions.resetForm();
         }}
@@ -19,6 +23,7 @@ export default function SearchBar({ onSearch }) {
             placeholder="🔎 Search images and photos"
           />
           <button type="submit">Submit</button>
+          <Toaster/>
         </Form>
       </Formik>
     );
